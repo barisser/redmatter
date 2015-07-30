@@ -27,6 +27,10 @@
 ###Threats
   - Sybil Attacks
       Huge numbers of false nodes reporting false data
+  - Spamming Attack
+      There must be some cost to adding data
+  - Baiting
+      It must not be rational to constantly offer hosting, receive bitcoins, and then turn off.
 
 ###Solutions
   - Money flows as an informational signal
@@ -35,3 +39,11 @@
     - Being Trustworthy is either
      - Being upvoted by other nodes (scaling with their trustworthiness)
      - Sending bitcoins to other honest nodes
+
+##Guarding
+Each node is a 'guardian'.  It tells you where to go to find the next file/neighbor.  But it also reports on its knowledge about the trustworthiness of others.  This means
+      - did they host the files they said they would host over the requisite amount of time
+      - are they consistently lying / how much do i agree with them on everything.
+
+##Hosting
+Each node may host files: a tuneable amount of data of course.
