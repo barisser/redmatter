@@ -17,3 +17,9 @@ def hostthread():
 
 def init():
     data.try_generate_identity()
+
+if __name__ == "__main__":
+   go()
+   k=0
+   while True:
+       k=0
