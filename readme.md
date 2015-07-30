@@ -44,6 +44,12 @@
 Each node is a 'guardian'.  It tells you where to go to find the next file/neighbor.  But it also reports on its knowledge about the trustworthiness of others.  This means
       - did they host the files they said they would host over the requisite amount of time
       - are they consistently lying / how much do i agree with them on everything.
+      
 
 ##Hosting
 Each node may host files: a tuneable amount of data of course.
+
+##The ask-for-hosting cycle
+- start with a file, convert it deterministically to the right hash
+- send out "who should host this?" request.  Request reverberates until nodes who cant find nearest neighbors offer to host.  Originator gets a list of nodes who should host.  List will be too long.  Originator picks short list based on minimizing distance between node hashes and the file's hash.
+- 
