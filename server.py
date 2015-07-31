@@ -7,12 +7,12 @@ import neighbor
 import serving_logic
 
 app = Flask(__name__)
-app.config['PROPAGATE_EXCEPTIONS']=True
+app.config['PROPAGATE_EXCEPTIONS'] = True
 
 @app.route('/')
 def something():
     identity = data.fetch_identity()
-    response=make_response("I'm made of Redmatter.  My name is "+str(identity), 200)
+    response=make_response("I'm made of Redmatter.  My name is " + str(identity), 200)
     response.headers['Access-Control-Allow-Origin']= '*'
     return response
 
