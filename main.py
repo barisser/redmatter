@@ -1,8 +1,10 @@
 import data
+import logic
 import server
 import threading
+import time
 
-PORT=8000
+cycle_interval = 15
 
 def go():
     #hosting server
@@ -11,9 +13,19 @@ def go():
     hosting_thread.start()
 
     #other activities
+    logic_thread = threading.Thread(target=logicthread, args = ())
+    logic_thread.daemon = True
+    logic_thread.start()
 
 def hostthread():
     server.serve()
+
+def logicthread():
+    s = time.time()
+    while True:
+        if time.time() - s > cycle_interval:
+            logic.logic_cycle()
+            s = time.time()
 
 def init():
     data.try_generate_identity()

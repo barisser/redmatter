@@ -1,4 +1,5 @@
 import data
+import neighbor
 
 def data_is_present(datahash):
     a = datahash in data.data_hashes
@@ -6,11 +7,21 @@ def data_is_present(datahash):
 
 def handle_redmatter_request(data):
     k = data.keys()
+    # response = {}
+    # if 'filehash' in k: #this is a data request
+    #     response = handle_data_request(data)
+    # elif 'neighborhash' in k:
+    #     response = handle_neighbor_request(data)
+    # return response
+    if data['type'] == 'ping':
+        return construct_ping_response(data)
+
+def construct_ping_response(data):
+    n = neighbor.load_nodes()
     response = {}
-    if 'filehash' in k: #this is a data request
-        response = handle_data_request(data)
-    elif 'neighborhash' in k:
-        response = handle_neighbor_request(data)
+    response['type'] = 'ping_response'
+    response['neighbors'] = n
+    print response
     return response
 
 def handle_data_request(request):

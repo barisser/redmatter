@@ -17,7 +17,7 @@ def load_own_identity():
 
 def load_nodes():
     r = load_neighbors()
-    r << load_own_identity()
+    r.append(load_own_identity())
     return r
 
 def save_neighbors(neighbors):
@@ -25,6 +25,11 @@ def save_neighbors(neighbors):
 
 def init_neighbors():
     save_neighbors([])
+
+def add_and_save_neighbor(neighbor):
+    n = load_neighbors()
+    n.append(neighbor)
+    save_neighbors(n)
 
 def init_identity(ip, port):
     r = hashlib.sha256(os.urandom(200)).hexdigest()
