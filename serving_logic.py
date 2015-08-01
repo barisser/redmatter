@@ -6,21 +6,33 @@ def data_is_present(datahash):
     return a
 
 def handle_redmatter_request(data):
-    k = data.keys()
-    # response = {}
-    # if 'filehash' in k: #this is a data request
-    #     response = handle_data_request(data)
-    # elif 'neighborhash' in k:
-    #     response = handle_neighbor_request(data)
-    # return response
-    if data['type'] == 'ping':
+    print data
+    if data["type"] == "ping":
         return construct_ping_response(data)
+    elif data["type"] == "forward":
+        forward(data)
+        return construct_forward_response(data)
+
+def forward(data):
+    k=0
+
+def construct_forward_response(data):
+    r = {}
+    r["type"] = "forward_response"
+    r["status"] = "idk"
+    return r
 
 def construct_ping_response(data):
     n = neighbor.load_nodes()
     response = {}
     response['type'] = 'ping_response'
-    response['neighbors'] = n
+    response['neighbors'] = []
+    for x in n:
+        r = {}
+        r['ip'] = x.ip
+        r['port'] = x.port
+        r['hash'] = x.hash
+        response['neighbors'].append(r)
     print response
     return response
 

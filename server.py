@@ -40,4 +40,4 @@ def neighbors():
     return response
 
 def serve():
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=5000)

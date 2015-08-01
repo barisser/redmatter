@@ -23,9 +23,11 @@ def hash_cycle(hash_data):
 
 def hash(hash_data):
     input = str(random.random()) + str(hash_data['last_block_hash'])
-    n = hashlib.sha(input).hexdigest()
+    n = hashlib.sha256(input).hexdigest()
     if compare_hashes(n, hash_data['best_hash']):
         hash_data['best_hash'] = n
+        print "hash found "+str(n)
+        print util.hash_to_int(n)
         hash_data['hash_answer'] = input
     return hash_data
 

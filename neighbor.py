@@ -8,6 +8,7 @@ class Neighbor:
         self.ip = ip
         self.port = port
         self.hash = hash
+        self.last_heard_from = 0
 
 def load_neighbors():
     return pickle.load(open("public/neighbors.p", "rb"))
