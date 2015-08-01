@@ -29,8 +29,14 @@ def init_neighbors():
 
 def add_and_save_neighbor(neighbor):
     n = load_neighbors()
-    n.append(neighbor)
-    save_neighbors(n)
+    found=False
+    for x in n:
+        if x.ip == neighbor.ip:
+            found = True
+    if found == False:
+        print "ADDING NEIGHBOR " + str(neighbor.ip)
+        n.append(neighbor)
+        save_neighbors(n)
 
 def init_identity(ip, port):
     r = hashlib.sha256(os.urandom(200)).hexdigest()

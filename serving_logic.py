@@ -43,14 +43,3 @@ def handle_data_request(request):
         #response['neighbor'] =
         #response['state'] =
         #response['nexthash'] =
-    else:
-        response['neighbor'] = -1
-        #response['state'] =
-
-
-
-def handle_neighbor_request(data):
-    k=0
-
-def find_nearest_neighbor_for_filehash(filehash, myhash):
-    myn = util.hash_to_int(myhash)

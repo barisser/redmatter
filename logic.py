@@ -26,7 +26,14 @@ def handle_ping_response(response):
     c = response.content
     d = json.dumps(c)
     print d
+    if d["type"] == "ping_response":
+        for x in d["neighbors"]:
+            if should_i_add_neighbor(x):
+                a = neighbor.Neighbor(x["ip"], x["hash"], x["port"])
+                neighbor.add_and_save_neighbor(a)
 
+def should_i_add_neighbor(neighbor):  #obviously to do
+    return True
 
 def logic_cycle():
     print "Performing Logic"
