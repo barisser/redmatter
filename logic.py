@@ -3,10 +3,12 @@ import neighbor
 import requests
 import time
 
+
 def ping():
     neighbors = neighbor.load_nodes()
     for neigh in neighbors:
         ping_neighbor(neigh)
+
 
 def ping_neighbor(neighbor):
     d = {}
@@ -22,6 +24,7 @@ def ping_neighbor(neighbor):
         print "no response heard..."
     return response
 
+
 def handle_ping_response(response):
     c = response.content
     d = json.dumps(c)
@@ -32,8 +35,10 @@ def handle_ping_response(response):
                 a = neighbor.Neighbor(x["ip"], x["hash"], x["port"])
                 neighbor.add_and_save_neighbor(a)
 
+
 def should_i_add_neighbor(neighbor):  #obviously to do
     return True
+
 
 def logic_cycle():
     print "Performing Logic"
