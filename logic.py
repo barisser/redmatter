@@ -15,7 +15,7 @@ def ping_neighbor(neighbor):
     url = str(neighbor.ip) + ":" + str(neighbor.port)
     print "Trying to ping " + str(url)
     try:
-        response = requests.post(url, data = d)
+        response = requests.post(url, data=d)
         print "heard response " + str(response.content)
     except:
         response = {}
