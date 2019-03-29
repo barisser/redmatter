@@ -1,9 +1,11 @@
 import data
 import neighbor
 
+
 def data_is_present(datahash):
     a = datahash in data.data_hashes
     return a
+
 
 def handle_redmatter_request(data):
     print data
@@ -13,14 +15,17 @@ def handle_redmatter_request(data):
         forward(data)
         return construct_forward_response(data)
 
+
 def forward(data):
     k=0
+
 
 def construct_forward_response(data):
     r = {}
     r["type"] = "forward_response"
     r["status"] = "idk"
     return r
+
 
 def construct_ping_response(data):
     n = neighbor.load_nodes()
@@ -35,6 +40,7 @@ def construct_ping_response(data):
         response['neighbors'].append(r)
     print response
     return response
+
 
 def handle_data_request(request):
     datahash = request['filehash']
