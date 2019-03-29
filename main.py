@@ -14,11 +14,11 @@ def go():
     hosting_thread.start()
 
     #other activities
-    logic_thread = threading.Thread(target=logicthread, args = ())
+    logic_thread = threading.Thread(target=logicthread, args=())
     logic_thread.daemon = True
     logic_thread.start()
 
-    hash_thread = threading.Thread(target=hashthread, args = ())
+    hash_thread = threading.Thread(target=hashthread, args=())
     hash_thread.daemon = True
     #hash_thread.start()
 
